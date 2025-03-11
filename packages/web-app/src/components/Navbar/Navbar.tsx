@@ -53,6 +53,7 @@ export const Navbar: React.FC<NavbarProps> = ({ items }) => {
 
     const handleLogoutConfirm = () => {
         dispatch(logout());
+        navigate('/login');
         setLogoutModalOpen(false);
     };
 

@@ -8,6 +8,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../redux';
 import { setUser } from '../../redux';
+import { useNavigate } from 'react-router-dom';
 
 interface SignUpFormValues {
     name: string;
@@ -31,6 +32,7 @@ export const SignUpForm: React.FC = () => {
     });
 
     const dispatch = useDispatch<AppDispatch>();
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
 
     const onSubmit: SubmitHandler<SignUpFormValues> = (data) => {
@@ -44,6 +46,7 @@ export const SignUpForm: React.FC = () => {
                 })
             );
             setLoading(false);
+            navigate('/history');
         }, 2000);
     };
 

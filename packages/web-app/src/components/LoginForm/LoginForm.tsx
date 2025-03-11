@@ -8,6 +8,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../redux'; // adjust paths as needed
 import { setAuth } from '../../redux';               // or whichever action sets isAuth = true
+import { useNavigate } from 'react-router-dom';
 
 interface LoginFormValues {
     email: string;
@@ -31,6 +32,7 @@ export const LoginForm: React.FC = () => {
 
     const dispatch = useDispatch<AppDispatch>();
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     // Get the user data from Redux to compare credentials
     const userInStore = useSelector((state: RootState) => state.user);
@@ -45,6 +47,7 @@ export const LoginForm: React.FC = () => {
                 // Set isAuth = true
                 dispatch(setAuth(true));
                 console.log('Login successful');
+                navigate('/history');
             } else {
                 // Show an error message in the form
                 methods.setError('password', {

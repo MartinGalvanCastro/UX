@@ -41,9 +41,6 @@ const userSlice = createSlice({
     },
     // Clears the user data and marks the user as not authenticated.
     logout: (state: UserState) => {
-      state.name = '';
-      state.email = '';
-      state.password = '';
       state.isAuth = false;
     },
   },
