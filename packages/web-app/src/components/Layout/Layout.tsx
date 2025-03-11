@@ -10,7 +10,7 @@ interface LayoutProps {
   children: ReactNode;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const theme = useTheme();
   const isAuth = useSelector((state: RootState) => state.user.isAuth);
 
@@ -35,6 +35,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           margin: '16px',
           padding: '16px',
           borderRadius: 8,
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'start',
         }}
       >
         {children}
@@ -68,5 +72,3 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     </Paper>
   );
 };
-
-export default Layout;

@@ -50,12 +50,13 @@ export const Button: React.FC<ButtonProps> = ({
     <MuiButton
       variant={muiVariant}
       color={color}
-      disabled={disabled || isLoading}
+      disabled={disabled}
+      loading={isLoading}
       onClick={onAction}
       sx={{ textTransform: 'uppercase', ...customSx, ...sx }}
       {...rest}
     >
-      {isLoading ? 'Loading...' : children}
+      {children}
     </MuiButton>
   );
 };

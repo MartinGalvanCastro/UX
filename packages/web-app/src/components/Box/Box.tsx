@@ -15,6 +15,7 @@ export interface BoxProps extends Omit<PaperProps, 'elevation'> {
   gap?: React.CSSProperties['gap'];
   /** Optional sx overrides */
   sx?: SxProps<Theme>;
+  elevation?: number
 }
 
 export const Box: React.FC<BoxProps> = ({
@@ -24,12 +25,13 @@ export const Box: React.FC<BoxProps> = ({
   alignItems,
   gap,
   children,
+  elevation,
   sx,
   ...rest
 }) => {
   return (
     <Paper
-      elevation={3}
+      elevation={elevation ?? 3}
       {...rest}
       sx={{
         borderRadius: 5,

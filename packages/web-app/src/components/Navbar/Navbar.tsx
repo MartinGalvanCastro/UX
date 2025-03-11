@@ -1,12 +1,13 @@
-// components/Navbar/index.tsx
 import React, { useState } from 'react';
 import Paper from '@mui/material/Paper';
 import Divider from '@mui/material/Divider';
 import { useTheme } from '@mui/material/styles';
-import { Text } from '../Text'; // your custom Text component
+import { Text } from '../Text';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Modal } from '../Modal'; // your custom Modal component
-import { Paper as MuiPaper } from '@mui/material'; // used for modal close button
+import { LogoutModal } from '../LogoutModal';
+import { useDispatch } from 'react-redux';
+import { AppDispatch, logout } from '../../redux';
+import logo from '../../assets/logo.svg';
 
 export interface NavItem {
     label: string;
@@ -22,9 +23,9 @@ export const Navbar: React.FC<NavbarProps> = ({ items }) => {
     const theme = useTheme();
     const navigate = useNavigate();
     const location = useLocation();
-    const activeRoute = location.pathname;
+    const dispatch = useDispatch<AppDispatch>();
 
-    // Determine if nav items exist
+    const activeRoute = location.pathname;
     const hasNavItems = items && items.length > 0;
 
     // State to control the logout modal
@@ -47,6 +48,11 @@ export const Navbar: React.FC<NavbarProps> = ({ items }) => {
     };
 
     const handleModalClose = () => {
+        setLogoutModalOpen(false);
+    };
+
+    const handleLogoutConfirm = () => {
+        dispatch(logout());
         setLogoutModalOpen(false);
     };
 
@@ -74,7 +80,11 @@ export const Navbar: React.FC<NavbarProps> = ({ items }) => {
                         cursor: hasNavItems ? 'pointer' : 'default',
                     }}
                 >
-                    {/** Insert logo if available (SVG, etc.) */}
+                    <img
+                        src={logo}
+                        alt="My Med Buddy Logo"
+                        style={{ width: 100, marginLeft: '1.5rem', marginRight: '1rem' }}
+                    />
                     <Text
                         variant="body"
                         sx={{
@@ -131,24 +141,11 @@ export const Navbar: React.FC<NavbarProps> = ({ items }) => {
             </Paper>
 
             {/* Logout Modal */}
-            <Modal open={logoutModalOpen} onClose={handleModalClose} width="400px">
-                <Text variant="body" sx={{ mb: 2 }}>
-                    La funcionalidad de Cerrar Sesión aún no está implementada.
-                </Text>
-                <MuiPaper
-                    onClick={handleModalClose}
-                    sx={{
-                        padding: '8px 16px',
-                        backgroundColor: theme.palette.primary.main,
-                        color: theme.palette.primary.contrastText,
-                        borderRadius: 1,
-                        cursor: 'pointer',
-                        textAlign: 'center',
-                    }}
-                >
-                    Cerrar
-                </MuiPaper>
-            </Modal>
+            <LogoutModal
+                open={logoutModalOpen}
+                onClose={handleModalClose}
+                onConfirm={handleLogoutConfirm}
+            />
         </>
     );
 };

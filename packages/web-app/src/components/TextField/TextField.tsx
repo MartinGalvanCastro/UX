@@ -2,6 +2,7 @@
 import React from 'react';
 import { TextField as MuiTextField, TextFieldProps as MuiTextFieldProps } from '@mui/material';
 import { Controller, useFormContext } from 'react-hook-form';
+import { Text } from '../Text';
 
 export interface TextFieldProps extends Omit<MuiTextFieldProps, 'name'> {
   name: string;
@@ -17,7 +18,9 @@ export const TextField: React.FC<TextFieldProps> = ({ name, label, ...rest }) =>
       render={({ field, fieldState: { error } }) => (
         <MuiTextField
           {...field}
-          label={label}
+          label={
+            <Text variant='ts'>{label}</Text>
+          }
           error={!!error}
           helperText={error ? error.message : ''}
           fullWidth
