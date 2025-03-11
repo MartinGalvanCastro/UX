@@ -39,6 +39,8 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'start',
+          minWidth: '100%',
+          height: '100%',
         }}
       >
         {children}
