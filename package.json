@@ -1,0 +1,21 @@
+{
+  "name": "ux-monorepo",
+  "packageManager": "yarn@4.7.0",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "web": "yarn workspace web-app",
+    "app": "yarn workspace mobile-app"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@fontsource-variable/exo-2": "^5.2.5",
+    "@mui/material": "^6.4.7",
+    "@mui/styled-engine-sc": "^6.4.6",
+    "@reduxjs/toolkit": "^2.6.1",
+    "styled-components": "^6.1.15",
+    "web": "^0.0.2"
+  }
+}
