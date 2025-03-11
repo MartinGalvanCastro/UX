@@ -77,6 +77,7 @@ export const LoginForm: React.FC = () => {
                         paddingRight: '30px',
                     }}
                 >
+
                     {/* Fields Container */}
                     <Box direction="column" alignItems="stretch" gap="20px" elevation={0}>
                         <TextField name="email" label="Correo" />
@@ -89,10 +90,20 @@ export const LoginForm: React.FC = () => {
                         isLoading={loading}
                         onAction={methods.handleSubmit(onSubmit)}
                         disabled={!methods.formState.isValid || loading}
-                        sx={{ marginTop: '50px' }}
+                        sx={{ marginTop: '50px', marginBottom: '30px' }}
                     >
                         INICIAR SESIÓN
                     </Button>
+
+
+                    {/* Forgot Password */}
+                    <div>
+                        <Button
+                            onAction={() => navigate('/forgotPassword/sendEmail')}
+                            variant="text">
+                            Olvide Contraseña
+                        </Button>
+                    </div>
                 </Box>
             </form>
         </FormProvider>

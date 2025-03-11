@@ -9,6 +9,7 @@ export const LoginScreen = () => {
         <Grid container spacing={8}
             sx={{
                 minWidth: '100%',
+                alignItems: 'center',
             }} >
             <Grid size={6}>
                 <Grid container direction='column' spacing={4}
