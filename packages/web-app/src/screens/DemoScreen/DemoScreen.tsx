@@ -1,11 +1,12 @@
-import { AddAlarmForm } from "../../components/AddAlarmForm"
-
+import { AlarmPreferencesForm } from "../../components/AlarmPreferncesForm"
 
 export const DemoScreen = () => {
     return (
+
         <div
             style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
-            <AddAlarmForm />
+            <AlarmPreferencesForm />
         </div>
+
     )
 }

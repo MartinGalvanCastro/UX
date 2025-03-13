@@ -9,7 +9,7 @@ export interface SwitchProps extends Omit<MuiSwitchProps, 'onChange'> {
   /** Name of the switch (useful for forms) */
   name: string;
   /** Label to display next to the switch */
-  label: string;
+  label?: string;
   /** Controlled checked state */
   checked: boolean;
   /**
@@ -32,6 +32,18 @@ export const Switch: React.FC<SwitchProps> = ({
   ) => {
     onToggle(newChecked);
   };
+
+  if (!label) {
+    return (
+      <MuiSwitch
+        {...props}
+        name={name}
+        checked={checked}
+        onChange={handleChange}
+        color="primary"
+      />
+    );
+  }
 
   return (
     <FormControlLabel

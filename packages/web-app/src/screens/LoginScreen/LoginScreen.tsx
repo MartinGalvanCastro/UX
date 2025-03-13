@@ -27,7 +27,8 @@ export const LoginScreen = () => {
                     <Grid>
                         <Text sx={{
                             fontSize: 57,
-                            fotnWeight: 400,
+                            fontWeight: 400,
+                            lineHeight: '72px',
                         }} align='center'>My Med Buddy</Text>
                     </Grid>
                 </Grid>

@@ -1,11 +1,19 @@
 // store.ts
 import { configureStore, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+/** Defines notification preferences for the user */
+export interface NotificationPreferences {
+  email: boolean;
+  pushNotification: boolean;
+  sms: boolean;
+}
+
 export interface UserState {
   name: string;
   email: string;
   password: string;
   isAuth: boolean;
+  notificationPreferences: NotificationPreferences;
 }
 
 const initialState: UserState = {
@@ -13,6 +21,11 @@ const initialState: UserState = {
   email: '',
   password: '',
   isAuth: false,
+  notificationPreferences: {
+    email: false,
+    pushNotification: false,
+    sms: false,
+  },
 };
 
 const userSlice = createSlice({
@@ -20,33 +33,50 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     // Sets the entire user object and marks the user as authenticated.
-    setUser: (state: UserState, action: PayloadAction<UserState>): UserState => {
+    setUser: (state, action: PayloadAction<UserState>): UserState => {
       return { ...action.payload, isAuth: true };
     },
     // Updates only the name.
-    updateName: (state: UserState, action: PayloadAction<string>) => {
+    updateName: (state, action: PayloadAction<string>) => {
       state.name = action.payload;
     },
     // Updates only the email.
-    updateEmail: (state: UserState, action: PayloadAction<string>) => {
+    updateEmail: (state, action: PayloadAction<string>) => {
       state.email = action.payload;
     },
     // Updates only the password.
-    updatePassword: (state: UserState, action: PayloadAction<string>) => {
+    updatePassword: (state, action: PayloadAction<string>) => {
       state.password = action.payload;
     },
     // Sets the isAuth flag.
-    setAuth: (state: UserState, action: PayloadAction<boolean>) => {
+    setAuth: (state, action: PayloadAction<boolean>) => {
       state.isAuth = action.payload;
     },
     // Clears the user data and marks the user as not authenticated.
-    logout: (state: UserState) => {
+    logout: (state) => {
       state.isAuth = false;
+      // Optionally clear other user fields if desired.
+      // e.g. state.name = ''; state.email = ''; state.password = '';
+    },
+    // Updates the notification preferences object.
+    updateNotificationPreferences: (
+      state,
+      action: PayloadAction<NotificationPreferences>
+    ) => {
+      state.notificationPreferences = action.payload;
     },
   },
 });
 
-export const { setUser, updateName, updateEmail, updatePassword, setAuth, logout } = userSlice.actions;
+export const {
+  setUser,
+  updateName,
+  updateEmail,
+  updatePassword,
+  setAuth,
+  logout,
+  updateNotificationPreferences,
+} = userSlice.actions;
 
 export const store = configureStore({
   reducer: {
