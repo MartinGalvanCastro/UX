@@ -8,6 +8,8 @@ import { Screen } from '../../components/Screen'; // or wherever your Screen com
 import { Text } from 'react-native-paper';
 import { TextField } from '../../components/TextField/TextField';
 import { Button } from '../../components/Button';
+import { useNavigation } from '@react-navigation/native';
+import { SignUpScreenName } from '../SignupScreen/SignupScreen';
 
 export const LoginScreenName = 'Login';
 
@@ -26,7 +28,10 @@ const loginSchema = Yup.object().shape({
 });
 
 export function LoginScreen() {
-    // 2) Pass the yupResolver to useForm
+
+
+    const navigtion = useNavigation();
+
     const methods = useForm<LoginFormValues>({
         resolver: yupResolver(loginSchema),
         defaultValues: {
@@ -42,8 +47,7 @@ export function LoginScreen() {
     };
 
     const onRegistrate = () => {
-        console.log('REGISTRATE pressed');
-        // navigate to registration or do something else
+        navigtion.navigate(SignUpScreenName);
     };
 
     const onForgotPassword = () => {
