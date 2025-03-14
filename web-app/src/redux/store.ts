@@ -8,6 +8,12 @@ export interface NotificationPreferences {
   sms: boolean;
 }
 
+interface AuthUserPayload{
+  name: string;
+  email: string;
+  password: string;
+}
+
 export interface UserState {
   name: string;
   email: string;
@@ -33,8 +39,8 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     // Sets the entire user object and marks the user as authenticated.
-    setUser: (state, action: PayloadAction<UserState>): UserState => {
-      return { ...action.payload, isAuth: true };
+    setUser: (state, action: PayloadAction<AuthUserPayload>): UserState => {
+      return { ...state, ...action.payload, isAuth: true, };
     },
     // Updates only the name.
     updateName: (state, action: PayloadAction<string>) => {

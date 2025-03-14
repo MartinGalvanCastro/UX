@@ -1,14 +1,19 @@
 // alarmSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {v4 as uuidv4} from 'uuid';
 
-export interface Alarm {
-  id: string;
-  name: string;
+interface AlarmPayload{
+   name: string;
   timestamp: number; // when to take the alarm (as a timestamp)
   // If the alarm repeats daily, quantityLeft can be omitted.
   quantityLeft?: number;
   repeatDaily: boolean;
 }
+export interface Alarm extends AlarmPayload{
+  id: string;
+}
+
+
 
 export interface AlarmState {
   alarms: Alarm[];
@@ -22,8 +27,8 @@ export const alarmSlice = createSlice({
   name: 'alarm',
   initialState: initialAlarmState,
   reducers: {
-    addAlarm: (state, action: PayloadAction<Alarm>) => {
-      state.alarms.push(action.payload);
+    addAlarm: (state, action: PayloadAction<AlarmPayload>) => {
+      state.alarms.push({...action.payload, id: uuidv4()});
     },
     updateAlarm: (state, action: PayloadAction<Alarm>) => {
       const index = state.alarms.findIndex(alarm => alarm.id === action.payload.id);

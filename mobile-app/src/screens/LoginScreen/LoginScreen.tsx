@@ -1,84 +1,96 @@
-// LoginScreen.tsx
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { useForm, FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as Yup from 'yup';
-import { Screen } from '../../components/Screen'; // or wherever your Screen component is
+import React, { useState } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
+import { StyleSheet, View } from 'react-native';
 import { Text } from 'react-native-paper';
-import { TextField } from '../../components/TextField/TextField';
+import { useDispatch, useSelector } from 'react-redux';
+import * as Yup from 'yup';
 import { Button } from '../../components/Button';
-import { useNavigation } from '@react-navigation/native';
-import { SignUpScreenName } from '../SignupScreen/SignupScreen';
+import { Screen } from '../../components/Screen';
+import { TextField } from '../../components/TextField/TextField';
+import { AppRoutes, useNavigation } from '../../navigation';
+import { setAuth, type AppDispatch, type RootState } from '../../redux';
 
 export const LoginScreenName = 'Login';
 
 interface LoginFormValues {
-    correo: string;
-    contrasena: string;
+    email: string;
+    password: string;
 }
 
-// 1) Define your validation schema using Yup
+// Define your validation schema using Yup
 const loginSchema = Yup.object().shape({
-    correo: Yup.string()
-        .email('Correo inválido')
-        .required('Correo es requerido'),
-    contrasena: Yup.string()
+    email: Yup.string()
+        .email('Email no válido')
+        .required('Email es requerido'),
+    password: Yup.string()
         .required('Contraseña es requerida'),
 });
 
 export function LoginScreen() {
-
-
-    const navigtion = useNavigation();
+    const [loading, setLoading] = useState<boolean>(false);
+    const navigation = useNavigation();
+    const dispatch = useDispatch<AppDispatch>();
+    const { email, password } = useSelector((state: RootState) => state.user);
 
     const methods = useForm<LoginFormValues>({
         resolver: yupResolver(loginSchema),
         defaultValues: {
-            correo: '',
-            contrasena: '',
+            email: '',
+            password: '',
         },
-        mode: 'onChange', // triggers validation on each change
+        mode: 'onChange',
     });
 
     const onSubmit = (data: LoginFormValues) => {
-        console.log('Login data:', data);
-        // handle login logic here
+        setLoading(true);
+
+        setTimeout(() => {
+            if (data.email !== email || data.password !== password) {
+                methods.setError('password', {
+                    type: 'manual',
+                    message: 'Credenciales inválidas',
+                });
+                methods.setError('email', {
+                    type: 'manual',
+                    message: 'Credenciales inválidas',
+                });
+            } else {
+                dispatch(setAuth(true));
+            }
+            setLoading(false);
+        }, 1000);
     };
 
-    const onRegistrate = () => {
-        navigtion.navigate(SignUpScreenName);
+    const onRegister = () => {
+        navigation.navigate(AppRoutes.SignUp);
     };
 
     const onForgotPassword = () => {
-        console.log('OLVIDE MI CONTRASEÑA pressed');
-        // navigate to reset password or do something else
+        navigation.navigate(AppRoutes.ForgotPasswordSendEmail);
     };
 
     return (
         <Screen>
-            {/* 3) Provide the form methods to child components */}
             <FormProvider {...methods}>
                 <View style={styles.container}>
-                    {/* Title */}
                     <Text variant="displayLarge" style={styles.title}>
                         My Med Buddy
                     </Text>
 
                     <View style={styles.divider} />
 
-                    {/* Inputs */}
                     <View style={styles.inputContainer}>
                         <View>
                             <TextField
-                                name="correo"
-                                label="Correo"
+                                name="email"
+                                label="Email"
                             />
                         </View>
                         <View>
                             <TextField
-                                name="contrasena"
-                                label="Contraseña"
+                                name="password"
+                                label="Password"
                                 secureTextEntry
                             />
                         </View>
@@ -86,14 +98,13 @@ export function LoginScreen() {
 
                     <View style={styles.divider} />
 
-                    {/* Buttons Row */}
                     <View style={styles.buttonRow}>
                         <Button
                             mode="outlined"
-                            onAction={onRegistrate}
+                            onAction={onRegister}
                             style={styles.button}
                         >
-                            REGÍSTRATE
+                            REGISTRARSE
                         </Button>
 
                         <Button
@@ -106,13 +117,12 @@ export function LoginScreen() {
                         </Button>
                     </View>
 
-                    {/* Bottom Link */}
                     <Button
                         mode="text"
                         onAction={onForgotPassword}
                         style={styles.forgotButton}
                     >
-                        OLVIDE MI CONTRASEÑA
+                        OLVIDÉ MI CONTRASEÑA
                     </Button>
                 </View>
             </FormProvider>
