@@ -13,10 +13,7 @@ interface AuthUserPayload {
   password: string;
 }
 
-export interface UserState {
-  name: string;
-  email: string;
-  password: string;
+export interface UserState extends AuthUserPayload {
   isAuth: boolean;
   notificationPreferences: NotificationPreferences;
 }

@@ -12,9 +12,6 @@ interface AlarmPayload{
 export interface Alarm extends AlarmPayload{
   id: string;
 }
-
-
-
 export interface AlarmState {
   alarms: Alarm[];
 }
