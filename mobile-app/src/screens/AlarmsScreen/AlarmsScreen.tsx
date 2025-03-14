@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { FlatList, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Text, useTheme } from 'react-native-paper';
 import { Screen } from '../../components/Screen';
@@ -8,12 +8,20 @@ import { AlarmRow } from '../../components/AlarmRow/AlarmRow';
 import { AlarmListEmptyComponent } from '../../components/AlarmListEmptyComponent';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux';
+import { getNextAlarmTimestamp } from '../../util/getNextAlarmTimestamp';
 
 
-function DemoScreenInternal() {
+function AlarmScreenInternal() {
     const theme = useTheme();
     const { alarms } = useSelector((state: RootState) => state.alarm);
     const { isEditMode, setIsEditMode } = useEditModeContext();
+
+    const sortedAlarms = useMemo(() => {
+        return alarms.slice().sort((a, b) => {
+            return getNextAlarmTimestamp(a) - getNextAlarmTimestamp(b);
+        });
+    }, [alarms]);
+
 
     const handlePress = () => {
         setIsEditMode(!isEditMode);
@@ -28,7 +36,7 @@ function DemoScreenInternal() {
                 </TouchableOpacity>
             )}
             <FlatList
-                data={alarms}
+                data={sortedAlarms}
                 keyExtractor={(item) => item.id}
                 renderItem={({ item }) => <AlarmRow alarm={item} />}
                 ListEmptyComponent={<AlarmListEmptyComponent />}
@@ -37,11 +45,11 @@ function DemoScreenInternal() {
     );
 }
 
-export function DemoScreen() {
+export function AlarmScreen() {
     return (
         <Screen dontHideNavbar>
             <EditModeProvider>
-                <DemoScreenInternal />
+                <AlarmScreenInternal />
             </EditModeProvider>
         </Screen>
     );
