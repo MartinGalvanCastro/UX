@@ -7,8 +7,9 @@ import { LoginScreen } from './screens/LoginScreen';
 import { SendEmailScreen, ConfirmationScreen, ChangePasswordScreen } from './screens/FogetPasswordScreens';
 import { HistoryScreen } from './screens/HistoryScreen';
 import { AdminScreen } from './screens/AdminScreen';
-import { ReportScreen } from './screens/ReportScreen';
-import { AddAlarmScreen } from './screens/AddAlarmScreen';
+import { ReportScreen } from './screens/ReportScreen/ReportScreen';
+import { AddAlarmScreen } from './screens/AddAlarmScreen/AddAlarmScreen';
+import { ProfileScreen } from './screens/AdminScreen/ProfileScreen';
 import { AlarmPreferncesScreen } from './screens/AlarmPreferencesScreen';
 
 const App: React.FC = () => {
@@ -28,6 +29,9 @@ const App: React.FC = () => {
         <Route path="/history" element={<HistoryScreen />} />
         <Route path="/reports" element={<ReportScreen />} />
         <Route path="/addAlarm" element={<AddAlarmScreen />} />
+        <Route path="/profile" element={<ProfileScreen />} />
+
+        {/** Auth Screens */}
         <Route path="/profileAdmin" element={<AdminScreen />} />
         <Route path="/profileAdmin/alarmPreferences" element={<AlarmPreferncesScreen />} />
         <Route path="/profileAdmin/editProfile" element={<AdminScreen />} />
