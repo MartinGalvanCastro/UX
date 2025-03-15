@@ -42,7 +42,7 @@ export function OnboardingScreen({ route }: OnboardingScreenProps) {
     };
 
     return (
-        <Screen>
+        <Screen scrollable>
             <View style={styles.container}>
                 {(step === 1) && (
                     <View style={styles.skipContainer}>

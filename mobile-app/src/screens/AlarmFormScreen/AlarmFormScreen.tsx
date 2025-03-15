@@ -82,7 +82,7 @@ export function AlarmFormScreen({ route, navigation }: AlarmFormScreenProps) {
     };
 
     return (
-        <Screen>
+        <Screen scrollable>
             <FormProvider {...methods}>
                 <View style={styles.container}>
                     <IconButton icon="arrow-left" onPress={() => navigation.goBack()} />
