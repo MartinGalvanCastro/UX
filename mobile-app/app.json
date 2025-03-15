@@ -4,11 +4,11 @@
     "slug": "mobile-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/img/logo.jpg",
+    "icon": "./assets/img/logoSquare.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/img/logo.jpg",
+      "image": "./assets/img/logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#F5F5FA"
     },
@@ -22,7 +22,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/img/logo.jpg",
+        "foregroundImage": "./assets/img/logoSquare.png",
         "backgroundColor": "#F5F5FA"
       },
       "package": "com.feikfeik10.mobileapp"
