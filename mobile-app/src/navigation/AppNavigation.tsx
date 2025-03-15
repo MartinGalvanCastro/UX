@@ -35,6 +35,7 @@ export const AppNavigation = () => {
 
                 {/** Vistas Diego */}
                 <Stack.Screen name={AppRoutes.AlarmList} component={AlarmScreen} />
+                <Stack.Screen name={AppRoutes.AlarmForm} component={AlarmFormScreen} />
 
                 {/** Vistas Diego 
                 <Stack.Screen name={AppRoutes.CreateAlarm} component={AlarmFormScreen} />

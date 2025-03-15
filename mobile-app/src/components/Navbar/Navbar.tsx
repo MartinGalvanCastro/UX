@@ -2,6 +2,7 @@ import { StyleProp, StyleSheet, ViewStyle } from 'react-native';
 import { Appbar, useTheme } from "react-native-paper";
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNewAlertFromPhoto } from '../../hooks/useNewAlertFromPhoto';
+import { AppRoutes, useNavigation } from '../../navigation';
 
 export interface NavbarProp {
     style?: StyleProp<ViewStyle>;
@@ -13,6 +14,7 @@ export const Navbar = ({
     const { bottom } = useSafeAreaInsets();
     const theme = useTheme();
     const { generateNewAlert } = useNewAlertFromPhoto();
+    const navigation = useNavigation();
 
     return (
         <Appbar safeAreaInsets={{ bottom }} style={[
@@ -26,7 +28,7 @@ export const Navbar = ({
                 mode='contained'
                 iconColor={theme.colors.onPrimary}
                 containerColor={theme.colors.primary}
-                onPress={() => console.log('plus')}
+                onPress={() => navigation.navigate(AppRoutes.AlarmForm, {})}
                 size={30} />
             <Appbar.Action
                 icon="camera"

@@ -3,7 +3,6 @@ import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 
 interface AlarmPayload {
-  id:string,
   name:string,
   cadence: number,
   firstDoseHour: string,
@@ -30,10 +29,10 @@ export const alarmSlice = createSlice({
     addAlarm: (state, action: PayloadAction<AlarmPayload>) => {
       state.alarms.push({ ...action.payload, id: uuidv4() });
     },
-    updateAlarm: (state, action: PayloadAction<Alarm>) => {
+    updateAlarm: (state, action: PayloadAction<AlarmPayload>) => {
       const index = state.alarms.findIndex(alarm => alarm.id === action.payload.id);
       if (index !== -1) {
-        state.alarms[index] = action.payload;
+        state.alarms[index] = { ...state.alarms[index], ...action.payload };
       }
     },
     deleteAlarm: (state, action: PayloadAction<string>) => {

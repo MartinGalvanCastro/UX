@@ -3,7 +3,6 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { TextInput as PaperTextInput, TextInputProps, HelperText } from 'react-native-paper';
 import { Controller, useFormContext } from 'react-hook-form';
-import { Text } from 'react-native-paper';
 
 export interface TextFieldProps extends Omit<TextInputProps, 'name'> {
     name: string;
