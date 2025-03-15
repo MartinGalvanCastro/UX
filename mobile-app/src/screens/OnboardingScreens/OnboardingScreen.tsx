@@ -89,6 +89,7 @@ const styles = StyleSheet.create({
     },
     skipContainer: {
         alignItems: 'flex-end',
+        alignSelf: 'flex-end',
     },
     content: {
         marginTop: 64,

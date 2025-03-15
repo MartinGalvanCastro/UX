@@ -2,7 +2,8 @@ import { StyleProp, StyleSheet, ViewStyle } from 'react-native';
 import { Appbar, useTheme } from "react-native-paper";
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNewAlertFromPhoto } from '../../hooks/useNewAlertFromPhoto';
-import { AppRoutes, useNavigation } from '../../navigation';
+import { AppRoutes } from '../../navigation/AppRoutes';
+import { useNavigation } from '../../navigation/useNavigation';
 
 export interface NavbarProp {
     style?: StyleProp<ViewStyle>;
@@ -42,7 +43,7 @@ export const Navbar = ({
                 mode='contained'
                 iconColor={theme.colors.onPrimary}
                 containerColor={theme.colors.primary}
-                onPress={() => console.log('settings')}
+                onPress={() => navigation.navigate(AppRoutes.MyAccount)}
                 size={30} />
         </Appbar>
 

@@ -18,7 +18,7 @@ export const AlarmListEmptyComponent = () => {
                 icon="tray-arrow-down"
                 size={48}
                 iconColor={theme.colors.onSurface}
-                onPress={() => console.log('Icon pressed')}
+                disabled
             />
         </View>
     );

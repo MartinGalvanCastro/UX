@@ -165,6 +165,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     saveButton: {
-        alignSelf: 'stretch',
+        alignSelf: 'center',
     },
 });

@@ -3,7 +3,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface NotificationPreferences {
   email: boolean;
-  pushNotification: boolean;
   sms: boolean;
 }
 
