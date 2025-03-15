@@ -6,6 +6,7 @@ import { theme } from './src/theme';
 import { AppNavigation } from './src/navigation/AppNavigation';
 import { Provider } from 'react-redux';
 import { store } from './src/redux';
+import { SnackbarProvider } from './src/providers/SnackbarProvider/SnackbarProvider';
 
 const AppContent = () => {
   const theme = useTheme();
@@ -23,7 +24,9 @@ export default function App() {
     <PaperProvider theme={theme}>
       <SafeAreaProvider>
         <Provider store={store}>
-          <AppContent />
+          <SnackbarProvider>
+            <AppContent />
+          </SnackbarProvider>
         </Provider>
       </SafeAreaProvider>
     </PaperProvider>

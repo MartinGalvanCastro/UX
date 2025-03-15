@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Platform, TouchableOpacity } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useDispatch, useSelector } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -10,10 +10,9 @@ import { RootState, addAlarm, updateAlarm } from '../../redux';
 import { Text, Switch, TextInput as RNTextField, IconButton } from 'react-native-paper';
 import { Button } from '../../components/Button/Button';
 import { TextField } from '../../components/TextField/TextField';
-import { Screen } from '../../components/Screen';
 import { TimePickerField } from '../../components/TimePickerField';
-
-export type AlarmFormScreenProps = NativeStackScreenProps<AppStackParamList, AppRoutes.AlarmForm>;
+import { Screen } from '../../components/Screen';
+import { useSnackbar } from '../../hooks/useSnackbar'
 
 type FormValues = {
     name: string;
@@ -37,6 +36,8 @@ const schema = Yup.object().shape({
     }),
 });
 
+export type AlarmFormScreenProps = NativeStackScreenProps<AppStackParamList, AppRoutes.AlarmForm>;
+
 export function AlarmFormScreen({ route, navigation }: AlarmFormScreenProps) {
     const dispatch = useDispatch();
     const { alarms } = useSelector((state: RootState) => state.alarm);
@@ -44,6 +45,7 @@ export function AlarmFormScreen({ route, navigation }: AlarmFormScreenProps) {
     const existingAlarm = alarms.find((a) => a.id === alarmId) || null;
     const isEdit = existingAlarm !== null;
     const [loading, setLoading] = useState<boolean>(false);
+    const { showSnackbar, hideSnackbar } = useSnackbar();
 
     const defaultValues: FormValues = {
         name: existingAlarm?.name || '',
@@ -63,17 +65,20 @@ export function AlarmFormScreen({ route, navigation }: AlarmFormScreenProps) {
     const { handleSubmit, formState: { isValid } } = methods;
 
     const onSubmit = (data: FormValues) => {
-
-        setLoading(true)
-
+        setLoading(true);
         setTimeout(() => {
+            navigation.goBack();
             const action = isEdit ? updateAlarm : addAlarm;
             const payload = isEdit ? { ...existingAlarm, ...data } : data;
             dispatch(action(payload));
             setLoading(false);
-            navigation.goBack();
+            showSnackbar('Alarma guardada', 2000, {
+                label: 'OK',
+                onPress: () => {
+                    hideSnackbar();
+                },
+            });
         }, 1000);
-
     };
 
     return (
@@ -134,7 +139,6 @@ export function AlarmFormScreen({ route, navigation }: AlarmFormScreenProps) {
     );
 }
 
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -162,11 +166,5 @@ const styles = StyleSheet.create({
     },
     saveButton: {
         alignSelf: 'stretch',
-    },
-    timePickerButton: {
-        borderWidth: 1,
-        borderColor: '#ccc',
-        padding: 12,
-        borderRadius: 4,
     },
 });
