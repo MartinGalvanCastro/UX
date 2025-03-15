@@ -71,70 +71,72 @@ export function AddAlarmForm() {
     const isVitalicio = watch('vitalicio');
 
     return (
-        <FormProvider {...methods}>
-            <form
-                onSubmit={methods.handleSubmit(onSubmit)}
-                style={{ display: 'flex', flexDirection: 'column', gap: '25px', alignItems: 'start' }}
-            >
-                <TextField
-                    name="nombreMedicamento"
-                    label="Nombre Medicamento"
-                    placeholder="Nombre de la presentación"
-                />
-                <NumericField
-                    name="cadencia"
-                    label="Cadencia"
-                    placeholder="¿Cada cuánto se toma?"
-                    endText='Horas'
-                    minValue={1}
-                />
-                <TimeField
-                    name="horaPrimeraDosis"
-                    label="Hora Primera Dosis"
-                />
-                <NumericField
-                    name="dosificacion"
-                    label="Dosificación"
-                    placeholder="Cantidad a tomar (mg, mL, pastillas)"
-                    minValue={1}
-                />
-
-                <Switch
-                    name="vitalicio"
-                    label="¿Es vitalicio?"
-                    checked={isVitalicio}
-                    onToggle={(checked) => methods.setValue('vitalicio', checked)}
-                />
-
-                {!isVitalicio && (
-                    <NumericField
-                        name="numeroDosis"
-                        label="Número de Dosis"
-                        placeholder="¿Cuántas debes tomar?"
-                    />
-                )}
-
-                <div
-                    style={{ width: '100%', justifyContent: 'center', display: 'flex' }}
+        <div>
+            <FormProvider {...methods}>
+                <form
+                    onSubmit={methods.handleSubmit(onSubmit)}
+                    style={{ display: 'flex', flexDirection: 'column', gap: '25px', alignItems: 'start', maxWidth: '400px' }}
                 >
-                    <Button
-                        variant="filled"
-                        isLoading={loading}
-                        onAction={methods.handleSubmit(onSubmit)}
-                        disabled={!formState.isValid || loading}
-                        sx={{ marginTop: '50px' }}
-                    >
-                        GUARDAR
-                    </Button>
-                </div>
-            </form>
+                    <TextField
+                        name="nombreMedicamento"
+                        label="Nombre Medicamento"
+                        placeholder="Nombre de la presentación"
+                    />
+                    <NumericField
+                        name="cadencia"
+                        label="Cadencia"
+                        placeholder="¿Cada cuánto se toma?"
+                        endText='Horas'
+                        minValue={1}
+                    />
+                    <TimeField
+                        name="horaPrimeraDosis"
+                        label="Hora Primera Dosis"
+                    />
+                    <NumericField
+                        name="dosificacion"
+                        label="Dosificación"
+                        placeholder="Cantidad a tomar (mg, mL, pastillas)"
+                        minValue={1}
+                    />
 
-            <Toast
-                open={toastOpen}
-                message="Alarma Creada con éxito"
-                autoHideDuration={2000}
-                onClose={handleToastClose}
-            />
-        </FormProvider>
+                    <Switch
+                        name="vitalicio"
+                        label="¿Es vitalicio?"
+                        checked={isVitalicio}
+                        onToggle={(checked) => methods.setValue('vitalicio', checked)}
+                    />
+
+                    {!isVitalicio && (
+                        <NumericField
+                            name="numeroDosis"
+                            label="Número de Dosis"
+                            placeholder="¿Cuántas debes tomar?"
+                        />
+                    )}
+
+                    <div
+                        style={{ width: '100%', justifyContent: 'center', display: 'flex' }}
+                    >
+                        <Button
+                            variant="filled"
+                            isLoading={loading}
+                            onAction={methods.handleSubmit(onSubmit)}
+                            disabled={!formState.isValid || loading}
+                            sx={{ marginTop: '50px' }}
+                        >
+                            GUARDAR
+                        </Button>
+                    </div>
+                </form>
+
+                <Toast
+                    open={toastOpen}
+                    message="Alarma Creada con éxito"
+                    autoHideDuration={2000}
+                    onClose={handleToastClose}
+                />
+            </FormProvider>
+        </div>
     );
 }
