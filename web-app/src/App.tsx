@@ -10,6 +10,7 @@ import { HistoryScreen } from './screens/HistoryScreen';
 import { AdminScreen } from './screens/AdminScreen';
 import { ReportScreen } from './screens/ReportScreen/ReportScreen';
 import { AddAlarmScreen } from './screens/AddAlarmScreen/AddAlarmScreen';
+import { ProfileScreen } from './screens/AdminScreen/ProfileScreen';
 
 
 const App: React.FC = () => {
@@ -30,6 +31,7 @@ const App: React.FC = () => {
         <Route path="/profileAdmin" element={<AdminScreen />} />
         <Route path="/reports" element={<ReportScreen />} />
         <Route path="/addAlarm" element={<AddAlarmScreen />} />
+        <Route path="/profile" element={<ProfileScreen />} />
 
         {/** Auth Screens */}
         <Route path="/demo" element={<DemoScreen />} />

@@ -10,7 +10,7 @@ interface Link {
 let links: Link[] = [
     {
         name: "Modificar Perfil",
-        link: "/profileAdmin"
+        link: "/profile"
     },
     {
         name: "Preferencias de Alarma",
