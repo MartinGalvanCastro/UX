@@ -4,8 +4,8 @@
   "main": "index.ts",
   "scripts": {
     "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
     "web": "expo start --web"
   },
   "dependencies": {
@@ -21,6 +21,7 @@
     "date-fns": "^4.1.0",
     "expo": "~52.0.38",
     "expo-app-loading": "2.1.1",
+    "expo-dev-client": "~5.0.14",
     "expo-font": "~13.0.4",
     "expo-status-bar": "~2.0.1",
     "react": "18.3.1",
@@ -44,5 +45,5 @@
     "typescript": "^5.3.3"
   },
   "private": true,
-  "packageManager": "yarn@4.7.0"
+  "packageManager": "yarn@4.7.0+sha512.5a0afa1d4c1d844b3447ee3319633797bcd6385d9a44be07993ae52ff4facabccafb4af5dcd1c2f9a94ac113e5e9ff56f6130431905884414229e284e37bb7c9"
 }
