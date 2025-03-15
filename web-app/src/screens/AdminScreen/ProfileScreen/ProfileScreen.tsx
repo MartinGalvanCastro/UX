@@ -28,8 +28,8 @@ export const ProfileScreen = () => {
                     }}
                 >
                     <SignUpForm isUpdate />
-                </div>
-            </Box>
-        </div>
+                </div >
+            </Box >
+        </div >
     )
 }
