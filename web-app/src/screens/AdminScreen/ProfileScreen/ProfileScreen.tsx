@@ -1,5 +1,6 @@
-import { Box, IconButton, Typography } from "@mui/material"
+import { Box } from "@mui/material"
 import { SignUpForm } from "../../../components/SignupForm"
+import { BackLink } from "../../../components/BackLink"
 
 
 export const ProfileScreen = () => {
@@ -10,19 +11,14 @@ export const ProfileScreen = () => {
             }}
         >
             <Box
-            sx={{
-                height: "100%",
-                paddingLeft: "5vw",
-                width: "100%",
-            }}
+                sx={{
+                    height: "100%",
+                    paddingLeft: "5vw",
+                    width: "100%",
+                }}
             >
                 <Box sx={{ display: "flex", alignItems: "center", mb: 3 }}>
-                    <IconButton sx={{ mr: 1 }}>
-                    
-                    </IconButton>
-                    <Typography variant="h5" fontWeight="bold">
-                        Modificar Perfil
-                    </Typography>
+                    <BackLink text="Modificar Perfil" />
                 </Box>
                 <div
                     style={{
@@ -31,7 +27,7 @@ export const ProfileScreen = () => {
                         justifyContent: 'center',
                     }}
                 >
-                    <SignUpForm />
+                    <SignUpForm isUpdate />
                 </div>
             </Box>
         </div>

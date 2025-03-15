@@ -6,7 +6,7 @@ import { useForm, FormProvider, SubmitHandler } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../redux';
+import { AppDispatch, setAuth } from '../../redux';
 import { setUser } from '../../redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -25,7 +25,7 @@ const schema = Yup.object().shape({
         .required('Contraseña es requerida'),
 });
 
-export const SignUpForm: React.FC = () => {
+export const SignUpForm: React.FC<{ isUpdate?: boolean }> = ({ isUpdate }: { isUpdate?: boolean }) => {
     const methods = useForm<SignUpFormValues>({
         resolver: yupResolver(schema),
         defaultValues: { name: '', email: '', password: '' },
@@ -41,10 +41,10 @@ export const SignUpForm: React.FC = () => {
         setTimeout(() => {
             dispatch(
                 setUser({
-                    ...data,
-                    isAuth: true,
+                    ...data
                 })
             );
+            dispatch(setAuth(true));
             setLoading(false);
             navigate('/history');
         }, 2000);
@@ -78,7 +78,7 @@ export const SignUpForm: React.FC = () => {
                         disabled={!methods.formState.isValid || loading}
                         sx={{ marginTop: '50px' }}
                     >
-                        REGÍSTRATE
+                        {isUpdate ? 'GUARDAR' : 'REGISTRARSE'}
                     </Button>
                 </Box>
             </form>

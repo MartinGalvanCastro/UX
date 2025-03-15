@@ -1,6 +1,6 @@
-//import React from "react";
 import { Box } from "@mui/material";
 import { Text } from "../../components/Text";
+import { useNavigate } from "react-router-dom";
 
 interface Link {
     name: string;
@@ -19,6 +19,8 @@ let links: Link[] = [
 ];
 
 export const AdminScreen = () => {
+    const navigate = useNavigate();
+
     return (
         <div
             style={{
@@ -44,29 +46,24 @@ export const AdminScreen = () => {
                         marginX: "auto",
                     }}
                 >
-
-                    {
-                        links.map((link) => {
-                            return (
-                                <Text
-                                    key={link.name}
-                                    variant="t2"
-                                    style={{
-                                        cursor: "pointer",
-                                        marginBottom: "16px",
-                                        textDecoration: "underline",
-                                    }}
-                                    onClick={() => {
-                                        window.location.href = link.link;
-                                    }}
-                                >
-                                    {link.name}
-                                </Text>
-                            );
-                        })
-                    }
+                    {links.map((link) => (
+                        <Text
+                            key={link.name}
+                            variant="t2"
+                            style={{
+                                cursor: "pointer",
+                                marginBottom: "16px",
+                                textDecoration: "underline",
+                            }}
+                            onClick={() => {
+                                navigate(link.link);
+                            }}
+                        >
+                            {link.name}
+                        </Text>
+                    ))}
                 </Box>
             </Box>
-
-        </div>);
+        </div>
+    );
 };

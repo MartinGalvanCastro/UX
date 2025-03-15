@@ -10,6 +10,7 @@ import { AdminScreen } from './screens/AdminScreen';
 import { ReportScreen } from './screens/ReportScreen';
 import { AddAlarmScreen } from './screens/AddAlarmScreen';
 import { AlarmPreferncesScreen } from './screens/AlarmPreferencesScreen';
+import { ProfileScreen } from './screens/AdminScreen/ProfileScreen';
 
 const App: React.FC = () => {
   return (
@@ -32,7 +33,7 @@ const App: React.FC = () => {
         {/** Auth Screens */}
         <Route path="/profileAdmin" element={<AdminScreen />} />
         <Route path="/profileAdmin/alarmPreferences" element={<AlarmPreferncesScreen />} />
-        <Route path="/profileAdmin/editProfile" element={<AdminScreen />} />
+        <Route path="/profileAdmin/editProfile" element={<ProfileScreen />} />
 
 
         {/* Fallback */}
