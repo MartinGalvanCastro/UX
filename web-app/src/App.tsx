@@ -8,6 +8,7 @@ import { SendEmailScreen, ConfirmationScreen, ChangePasswordScreen } from './scr
 import { DemoScreen } from './screens/DemoScreen/DemoScreen';
 import { HistoryScreen } from './screens/HistoryScreen';
 import { ReportScreen } from './screens/ReportScreen/ReportScreen';
+import { AddAlarmScreen } from './screens/AddAlarmScreen/AddAlarmScreen';
 
 
 const App: React.FC = () => {
@@ -26,6 +27,7 @@ const App: React.FC = () => {
         {/**Vistas Diego */}
         <Route path="/history" element={<HistoryScreen />} />
         <Route path="/reports" element={<ReportScreen />} />
+        <Route path="/addAlarm" element={<AddAlarmScreen />} />
 
         {/** Auth Screens */}
         <Route path="/demo" element={<DemoScreen />} />
