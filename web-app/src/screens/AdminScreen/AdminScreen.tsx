@@ -10,11 +10,11 @@ interface Link {
 let links: Link[] = [
     {
         name: "Modificar Perfil",
-        link: "/profile"
+        link: "/profileAdmin/editProfile"
     },
     {
         name: "Preferencias de Alarma",
-        link: "/profileAdmin"
+        link: "/profileAdmin/alarmPreferences"
     }
 ];
 
@@ -33,40 +33,40 @@ export const AdminScreen = () => {
                 pt={3} // Espaciado en la parte superior
                 pl={3} // Espaciado en la parte izquierda
                 pr={7} // Espaciado en la parte derecha
-                >
+            >
                 <Box
                     sx={{
-                    backgroundColor: "white",
-                    padding: "16px",
-                    borderRadius: "12px",
-                    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
-                    width: "100%",
-                    marginX: "auto",
+                        backgroundColor: "white",
+                        padding: "16px",
+                        borderRadius: "12px",
+                        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+                        width: "100%",
+                        marginX: "auto",
                     }}
                 >
 
-                {
-                    links.map((link) => {
-                        return (
-                            <Text
-                                key={link.name}
-                                variant="t2"
-                                style={{
-                                    cursor: "pointer",
-                                    marginBottom: "16px",
-                                    textDecoration: "underline",
-                                }}
-                                onClick={() => {
-                                    window.location.href = link.link;
-                                }}
-                            >
-                                {link.name}
-                            </Text>
-                        );
-                    })
-                }
+                    {
+                        links.map((link) => {
+                            return (
+                                <Text
+                                    key={link.name}
+                                    variant="t2"
+                                    style={{
+                                        cursor: "pointer",
+                                        marginBottom: "16px",
+                                        textDecoration: "underline",
+                                    }}
+                                    onClick={() => {
+                                        window.location.href = link.link;
+                                    }}
+                                >
+                                    {link.name}
+                                </Text>
+                            );
+                        })
+                    }
                 </Box>
             </Box>
-                   
+
         </div>);
 };
