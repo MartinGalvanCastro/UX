@@ -80,13 +80,14 @@ export function AlarmPreferencesForm() {
             }}
         >
             <FormProvider {...methods}>
-                <form onSubmit={handleSubmit(onSubmit)} style={{ width: '300px' }}>
+                <form onSubmit={handleSubmit(onSubmit)} style={{ display: 'flex', flexDirection: 'column', gap: '16px', alignItems: 'start', maxWidth: '300px' }}>
                     {/* Correo row */}
                     <div
                         style={{
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'space-between',
+                            width: '100%',
                             padding: '8px 0',
                             borderBottom: '1px solid #ccc',
                         }}
@@ -105,6 +106,7 @@ export function AlarmPreferencesForm() {
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'space-between',
+                            width: '100%',
                             padding: '8px 0',
                             borderBottom: '1px solid #ccc',
                         }}
@@ -123,6 +125,7 @@ export function AlarmPreferencesForm() {
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'space-between',
+                            width: '100%',
                             padding: '8px 0',
                         }}
                     >
@@ -147,7 +150,7 @@ export function AlarmPreferencesForm() {
 
                 <Toast
                     open={toastOpen}
-                    message="Preferencias actualizadas con exito"
+                    message="Preferencias actualizadas con éxito"
                     autoHideDuration={2000}
                     onClose={handleToastClose}
                 />

@@ -20,7 +20,8 @@ export const BackLink = ({
                 flexDirection: "row",
                 alignItems: "center",
                 cursor: "pointer",
-                borderBottom: '2px solid #000'
+                borderBottom: '2px solid #000',
+                justifySelf: 'flex-start',
             }}>
             <HiArrowSmLeft className="text-2xl" />
             <Text >{text}</Text>

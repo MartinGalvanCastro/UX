@@ -28,10 +28,9 @@ const schema = Yup.object().shape({
     numeroDosis: Yup.number()
         .typeError('Número de dosis debe ser un número')
         .when('vitalicio', {
-            is: (val: boolean) => val === false,
-            then: (schema) =>
-                schema.required('Número de dosis es requerido').min(1, 'Debe ser al menos 1'),
-            otherwise: (schema) => schema.notRequired(),
+            is: true,
+            then: (schema) => schema.notRequired(),
+            otherwise: (schema) => schema.required('Número de dosis es requerido').min(1, 'Debe ser al menos 1')
         }),
 });
 
