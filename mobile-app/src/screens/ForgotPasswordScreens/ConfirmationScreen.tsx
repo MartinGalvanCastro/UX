@@ -26,7 +26,9 @@ export function ForgotPasswordConfirmationScreen() {
             Revisa tu bandeja de entrada o spam para restablecer tu contraseña.
           </Text>
         </View>
-        <Button mode="contained" onAction={handlePress}>
+        <Button mode="contained" onAction={handlePress} style={
+          styles.button
+        }>
           VOLVER
         </Button>
       </View>
@@ -52,4 +54,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingHorizontal: 16,
   },
+  button: {
+    alignSelf: 'center',
+  }
 });

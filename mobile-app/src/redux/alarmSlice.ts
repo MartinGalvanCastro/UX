@@ -1,20 +1,19 @@
-// alarmSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import {v4 as uuidv4} from 'uuid';
+import 'react-native-get-random-values';
+import { v4 as uuidv4 } from 'uuid';
 
-interface AlarmPayload{
-   name: string;
-  timestamp: number; // when to take the alarm (as a timestamp)
-  // If the alarm repeats daily, quantityLeft can be omitted.
-  quantityLeft?: number;
-  repeatDaily: boolean;
+interface AlarmPayload {
+  name:string,
+  cadence: number,
+  firstDoseHour: string,
+  dose: string,
+  isForver: boolean,
+  quantityLef?: number,
 }
-export interface Alarm extends AlarmPayload{
+
+export interface Alarm extends AlarmPayload {
   id: string;
 }
-
-
-
 export interface AlarmState {
   alarms: Alarm[];
 }
@@ -28,25 +27,19 @@ export const alarmSlice = createSlice({
   initialState: initialAlarmState,
   reducers: {
     addAlarm: (state, action: PayloadAction<AlarmPayload>) => {
-      state.alarms.push({...action.payload, id: uuidv4()});
+      state.alarms.push({ ...action.payload, id: uuidv4() });
     },
-    updateAlarm: (state, action: PayloadAction<Alarm>) => {
+    updateAlarm: (state, action: PayloadAction<AlarmPayload>) => {
       const index = state.alarms.findIndex(alarm => alarm.id === action.payload.id);
       if (index !== -1) {
-        state.alarms[index] = action.payload;
+        state.alarms[index] = { ...state.alarms[index], ...action.payload };
       }
     },
-    removeAlarm: (state, action: PayloadAction<string>) => {
+    deleteAlarm: (state, action: PayloadAction<string>) => {
       state.alarms = state.alarms.filter(alarm => alarm.id !== action.payload);
-    },
-    decrementAlarm: (state, action: PayloadAction<string>) => {
-      const alarm = state.alarms.find(alarm => alarm.id === action.payload);
-      if (alarm && !alarm.repeatDaily && alarm.quantityLeft && alarm.quantityLeft > 0) {
-        alarm.quantityLeft -= 1;
-      }
     },
   },
 });
 
-export const { addAlarm, updateAlarm, removeAlarm, decrementAlarm } = alarmSlice.actions;
+export const { addAlarm, updateAlarm, deleteAlarm } = alarmSlice.actions;
 export const alarmReducer = alarmSlice.reducer;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
+import { Keyboard, SafeAreaView, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux';
@@ -15,12 +15,14 @@ export function Screen({ children, dontHideNavbar }: ScreenProps) {
     const { isAuth } = useSelector((state: RootState) => state.user);
     return (
         <SafeAreaView style={[styles.container, { backgroundColor: theme.colors.background }]}>
-            <View style={styles.innerContainer}>
-                <View style={styles.content}>
-                    {children}
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+                <View style={styles.innerContainer}>
+                    <View style={styles.content}>
+                        {children}
+                    </View>
+                    {(isAuth && dontHideNavbar) && <Navbar />}
                 </View>
-                {(isAuth && dontHideNavbar) && <Navbar />}
-            </View>
+            </TouchableWithoutFeedback>
         </SafeAreaView>
     );
 }

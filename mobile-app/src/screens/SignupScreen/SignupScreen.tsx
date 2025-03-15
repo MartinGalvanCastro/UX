@@ -142,8 +142,10 @@ const styles = StyleSheet.create({
     },
     loginButton: {
         marginRight: 0,
+
     },
     forgotButton: {
+        alignSelf: 'center',
         marginTop: 16,
     },
 });

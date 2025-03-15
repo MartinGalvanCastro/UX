@@ -832,6 +832,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mui/styled-engine-sc@npm:^6.4.6":
+  version: 6.4.6
+  resolution: "@mui/styled-engine-sc@npm:6.4.6"
+  dependencies:
+    "@babel/runtime": "npm:^7.26.0"
+    "@types/hoist-non-react-statics": "npm:^3.3.6"
+    csstype: "npm:^3.1.3"
+    hoist-non-react-statics: "npm:^3.3.2"
+    prop-types: "npm:^15.8.1"
+  peerDependencies:
+    styled-components: ^6.0.0
+  checksum: 10c0/abeb83b7c02b58fdde41ad5f025aa688a3c0809052e183de41078a825e990d3a8770625dff5291ffe4d4293baed0f1e31a8034d8b299b7e5b6702490f56d4e50
+  languageName: node
+  linkType: hard
+
 "@mui/styled-engine@npm:^6.4.6":
   version: 6.4.6
   resolution: "@mui/styled-engine@npm:6.4.6"
@@ -1443,6 +1458,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/hoist-non-react-statics@npm:^3.3.6":
+  version: 3.3.6
+  resolution: "@types/hoist-non-react-statics@npm:3.3.6"
+  dependencies:
+    "@types/react": "npm:*"
+    hoist-non-react-statics: "npm:^3.3.0"
+  checksum: 10c0/149a4c217d81f21f8a1e152160a59d5b99b6a9aa6d354385d5f5bc02760cbf1e170a8442ba92eb653befff44b0c5bc2234bb77ce33e0d11a65f779e8bab5c321
+  languageName: node
+  linkType: hard
+
 "@types/json-schema@npm:^7.0.15":
   version: 7.0.15
   resolution: "@types/json-schema@npm:7.0.15"
@@ -1482,7 +1507,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^19.0.10":
+"@types/react@npm:*, @types/react@npm:^19.0.10":
   version: 19.0.10
   resolution: "@types/react@npm:19.0.10"
   dependencies:
@@ -2605,7 +2630,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hoist-non-react-statics@npm:^3.3.1":
+"hoist-non-react-statics@npm:^3.3.0, hoist-non-react-statics@npm:^3.3.1, hoist-non-react-statics@npm:^3.3.2":
   version: 3.3.2
   resolution: "hoist-non-react-statics@npm:3.3.2"
   dependencies:
@@ -4073,6 +4098,7 @@ __metadata:
     "@fontsource-variable/exo-2": "npm:^5.2.5"
     "@hookform/resolvers": "npm:^4.1.3"
     "@mui/material": "npm:^6.4.7"
+    "@mui/styled-engine-sc": "npm:^6.4.6"
     "@mui/x-charts": "npm:^7.27.1"
     "@mui/x-date-pickers": "npm:^7.27.3"
     "@reduxjs/toolkit": "npm:^2.6.1"
