@@ -56,6 +56,7 @@ export function LoginScreen() {
                     message: 'Credenciales inválidas',
                 });
             } else {
+                navigation.navigate(AppRoutes.AlarmList);
                 dispatch(setAuth(true));
             }
             setLoading(false);
@@ -111,7 +112,8 @@ export function LoginScreen() {
                             mode="contained"
                             onAction={methods.handleSubmit(onSubmit)}
                             style={[styles.button, styles.loginButton]}
-                            disabled={!methods.formState.isValid}
+                            disabled={loading || !methods.formState.isValid}
+                            loading={loading}
                         >
                             INICIAR SESIÓN
                         </Button>
@@ -166,5 +168,6 @@ const styles = StyleSheet.create({
     },
     forgotButton: {
         marginTop: 16,
+        alignSelf: 'center',
     },
 });

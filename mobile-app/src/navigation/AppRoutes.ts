@@ -13,11 +13,9 @@ export enum AppRoutes{
     MyAccount = 'MyAccountScreen',
     AlarmPreferences = 'AlarmPreferencesScreen',
     EmergencyContact = 'EmergencyContactsScreen',
-    Demo = 'DemoScreen',
 }
 
 export type AppStackParamList = {
-    [AppRoutes.Demo]: undefined;
     [AppRoutes.Login]: undefined;
     [AppRoutes.SignUp]: undefined;
     [AppRoutes.ForgotPasswordSendEmail]: undefined;

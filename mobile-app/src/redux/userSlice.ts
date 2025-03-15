@@ -3,7 +3,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface NotificationPreferences {
   email: boolean;
-  pushNotification: boolean;
   sms: boolean;
 }
 
@@ -13,10 +12,7 @@ interface AuthUserPayload {
   password: string;
 }
 
-export interface UserState {
-  name: string;
-  email: string;
-  password: string;
+export interface UserState extends AuthUserPayload {
   isAuth: boolean;
   notificationPreferences: NotificationPreferences;
 }
