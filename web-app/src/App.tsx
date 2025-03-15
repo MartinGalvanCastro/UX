@@ -29,11 +29,10 @@ const App: React.FC = () => {
         <Route path="/history" element={<HistoryScreen />} />
         <Route path="/reports" element={<ReportScreen />} />
         <Route path="/addAlarm" element={<AddAlarmScreen />} />
-        <Route path="/profile" element={<ProfileScreen />} />
 
         {/** Auth Screens */}
         <Route path="/profileAdmin" element={<AdminScreen />} />
-        <Route path="/profileAdmin/alarmPreferences" element={<AlarmPreferncesScreen />} />
+        <Route path="/profileAdmin/alarmPreferences" element={<ProfileScreen />} />
         <Route path="/profileAdmin/editProfile" element={<AdminScreen />} />
 
 
