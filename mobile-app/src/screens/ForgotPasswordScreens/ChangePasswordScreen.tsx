@@ -39,7 +39,7 @@ export function ForgotPasswordChangeScreen() {
     };
 
     return (
-        <Screen>
+        <Screen scrollable>
             <FormProvider {...methods}>
                 <View style={styles.container}>
                     <Text variant="displayLarge" style={styles.title}>

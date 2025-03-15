@@ -13,7 +13,7 @@ export function ForgotPasswordConfirmationScreen() {
   };
 
   return (
-    <Screen>
+    <Screen scrollable>
       <View style={styles.container}>
         <Text variant="displayLarge" style={styles.title}>
           Olvide Mi Contraseña

@@ -36,7 +36,7 @@ export function AlarmPreferencesScreen({ navigation }: AlarmPreferencesScreenPro
     };
 
     return (
-        <Screen>
+        <Screen scrollable>
             <View style={styles.container}>
                 <IconButton icon="arrow-left" onPress={() => navigation.goBack()} />
                 <Text variant="displayMedium" style={styles.title}>

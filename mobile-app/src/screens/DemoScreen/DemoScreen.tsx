@@ -39,7 +39,7 @@ function DemoScreenInternal() {
 
 export function DemoScreen() {
     return (
-        <Screen dontHideNavbar>
+        <Screen scrollable dontHideNavbar>
             <EditModeProvider>
                 <DemoScreenInternal />
             </EditModeProvider>

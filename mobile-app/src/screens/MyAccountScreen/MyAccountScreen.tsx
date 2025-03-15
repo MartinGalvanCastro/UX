@@ -18,7 +18,7 @@ export function MyAccountScreen({ navigation }: MyAccountScreenProps) {
     };
 
     return (
-        <Screen>
+        <Screen scrollable>
             <View style={styles.container}>
                 <IconButton
                     icon="arrow-left"

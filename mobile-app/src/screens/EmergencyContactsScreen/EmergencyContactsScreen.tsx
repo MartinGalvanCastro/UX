@@ -61,7 +61,7 @@ export function EmergencyContactScreen() {
     };
 
     return (
-        <Screen>
+        <Screen scrollable>
             <FormProvider {...methods}>
                 <IconButton icon="arrow-left" onPress={navigation.goBack} />
                 <Text variant="displaySmall" style={styles.title}>
