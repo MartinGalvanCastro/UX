@@ -6,6 +6,7 @@ import { SignUpScreen } from './screens/SignUpScreen';
 import { LoginScreen } from './screens/LoginScreen';
 import { SendEmailScreen, ConfirmationScreen, ChangePasswordScreen } from './screens/FogetPasswordScreens';
 import { DemoScreen } from './screens/DemoScreen/DemoScreen';
+import { HistoryScreen } from './screens/HistoryScreen';
 
 
 const App: React.FC = () => {
@@ -13,13 +14,16 @@ const App: React.FC = () => {
     <Layout>
       <Routes>
 
-        {/**No Auth Screens */}
+        {/**Vistas Martin */}
         <Route path="/login" element={<LoginScreen />} />
         <Route path="/signup" element={<SignUpScreen />} />
         <Route path="/forgotPassword/sendEmail" element={<SendEmailScreen />} />
         <Route path="/forgotPassword/confirmation" element={<ConfirmationScreen />} />
         <Route path="/forgotPassword/changePassword" element={<ChangePasswordScreen />} />
 
+
+        {/**Vistas Diego */}
+        <Route path="/history" element={<HistoryScreen />} />
 
         {/** Auth Screens */}
         <Route path="/demo" element={<DemoScreen />} />
